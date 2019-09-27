@@ -30,7 +30,7 @@ The file hierarchy of the project is mapped below.
     └── lib.rs
 ```
 
-The config file in .cargo directory contains the configuration settings which will be used when compiling the contract. The contents of the file-
+The `config` file in `.cargo` directory contains the configuration settings which will be used when compiling the contract. The contents of the file-
 
 ```bash
 [target.wasm32-unknown-unknown]
@@ -39,5 +39,5 @@ rustflags = [
 ]
 ```
 
-
+`[target.wasm32-unknown-unknown]` is the compile target. The target will directly be compiled to WASM using the low-level virtual machine \(LLVM\) back end
 
