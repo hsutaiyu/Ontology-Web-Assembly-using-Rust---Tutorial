@@ -10,7 +10,34 @@ To execute `rust` code on the Ontology blockchain, there's a process that needs 
 2. The bytecode is deployed on to the chain.
 3. Functions from the contract are invoked.
 
-We will approach the development process from two different angles. We will first look at a template desingned with the specific goal of getting you acquainted with the fundamentals of writing a `WASM` smart contract. And then, we will proceed to writing code from scratch.
+We will approach the development process from two different angles. We will first look at a template designed with the specific goal of getting you acquainted with the fundamentals of writing a `WASM` smart contract. And then, we will proceed to demonstrating how to start writing code from scratch.
+
+To facilitate developers looking to work on Ontology `WASM` smart contracts we have made available a `rust` template that developers can clone and start editing to speed things up. The code can be cloned from Github using the following command-
+
+```bash
+git clone https://github.com/ontio/rust-wasm-contract-template.git
+```
+
+The file hierarchy of the project is mapped below.
+
+```rust
+.
+├── .cargo
+│   └── config
+├── Cargo.toml
+├── build.sh
+└── src
+    └── lib.rs
+```
+
+The config file in .cargo directory contains the configuration settings which will be used when compiling the contract. The contents of the file-
+
+```bash
+[target.wasm32-unknown-unknown]
+rustflags = [
+	"-C", "link-args=-z stack-size=32768"
+]
+```
 
 
 
