@@ -18,6 +18,8 @@ To facilitate developers looking to work on Ontology `WASM` smart contracts we h
 git clone https://github.com/ontio/rust-wasm-contract-template.git
 ```
 
+## Project file hierarchy
+
 The file hierarchy of the project is mapped below.
 
 ```rust
@@ -39,5 +41,28 @@ rustflags = [
 ]
 ```
 
-`[target.wasm32-unknown-unknown]` is the compile target. The target will directly be compiled to WASM using the low-level virtual machine \(LLVM\) back end
+`[target.wasm32-unknown-unknown]` is the compile target. The target will directly be compiled to `WASM` using the low-level virtual machine \(LLVM\) back end. The resultant bytecode can be executed on Linux, Mac, and Windows system platforms. `rustflags` is used to configure the link arguments and the default stack size to 32768 bytes, 32KB that is. This indicates the highest stack value that the contract is allowed to use.
+
+`cargo.toml` file contains a few configuration settings and other details regarding the contract. The content is as follows-
+
+```yaml
+[package]
+name = "rust-wasm-contract-template"
+version = "0.1.0"
+authors = ["laizy <aochyi@126.com>"]
+edition = "2018"
+
+#See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"] #Compile as a dynamic link library
+
+[dependencies]
+ontio-std = {git = "https://github.com/ontio/ontology-wasm-cdt-rust"}
+
+[features]
+mock = ["ontio-std/mock"]
+```
+
+
 
