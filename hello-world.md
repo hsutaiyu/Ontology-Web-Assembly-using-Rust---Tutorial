@@ -162,7 +162,7 @@ If the system returns the error that the `gaslimit` is not enough, please change
 
 Next, we use the following command to invoke our smart contract. Here we use the contract address that was returned by the system earlier when we deployed the contract. 
 
-There are no parameters to be passed for this function, and the execution mode is --prepare which indicates that the contract will be pre-executed, thereby allowing us to see the value that will be returned by the invoke function. 
+There are no parameters to be passed for this function, and the execution mode is `--prepare` which indicates that the contract will be pre-executed, thereby allowing us to see the value that will be returned by the `invoke` function. 
 
 ```bash
 ./ontology contract invoke --address 0be3df2e320f86f55709806425dc1f0b91966634 --vmtype 3 --params '' --version 0 --prepare
@@ -179,11 +179,7 @@ Return:68656c6c6f (raw value)
 
 We expected a "Hello" to show up, but the value returned by the system is **68656c6c6f.** Why?
 
-The reason is simple. All the data values returned by the system will be hex encoded. A simple hexadecimal to string conversion will show that **68656c6c6f** is in fact "Hello".
+The reason is simple. All the data values returned by the system will be `hex` encoded. A simple hexadecimal to string conversion will show that **68656c6c6f** is in fact "Hello".
 
-
-
-```bash
-68656c6c6f
-```
+You have successfully executed your first Ontology `WASM` contract.
 
