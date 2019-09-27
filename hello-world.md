@@ -64,5 +64,13 @@ ontio-std = {git = "https://github.com/ontio/ontology-wasm-cdt-rust"}
 mock = ["ontio-std/mock"]
 ```
 
+In the `[lib]` configuration module,  `crate-type = ["cdylib"]` specifies the compilation `DLL` that can be invoked using other languages. 
 
+ `path = "src/lib.rs"` sets the library file path.
+
+`[dependencies]` section is used to specify the project dependency details. Here, we import the `ontio-std` library.
+
+`[features]` is used to toggle newly introduced features that are unstable. These features can be used with the nightly version compiler only.
+
+The build.sh file encapsulates functions that will be used to compile and optimize our contract. 
 
