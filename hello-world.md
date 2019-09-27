@@ -2,7 +2,7 @@
 description: An illustration to write the contract logic using rust
 ---
 
-# Hello World
+# Project Initiation - Hello World
 
 To execute `rust` code on the Ontology blockchain, there's a process that needs to be followed. The steps are carried out in the following way:
 
@@ -10,7 +10,7 @@ To execute `rust` code on the Ontology blockchain, there's a process that needs 
 2. The bytecode is deployed on to the chain.
 3. Functions from the contract are invoked.
 
-We will approach the development process from two different angles. We will first look at a template designed with the specific goal of getting you acquainted with the fundamentals of writing a `WASM` smart contract. And then, we will proceed to demonstrating how to start writing code from scratch.
+We will approach the development process from two different angles. In this section, we will first look at a template designed with the specific goal of getting you acquainted with the fundamentals of writing a `WASM` smart contract. And then in the later sections, we will proceed to demonstrating how to start writing code from scratch.
 
 To facilitate developers looking to work on Ontology `WASM` smart contracts we have made available a `rust` template that developers can clone and start editing to speed things up. The code can be cloned from Github using the following command-
 
@@ -18,7 +18,7 @@ To facilitate developers looking to work on Ontology `WASM` smart contracts we h
 git clone https://github.com/ontio/rust-wasm-contract-template.git
 ```
 
-## Project file hierarchy
+## Project file hierarchy and specifics
 
 The file hierarchy of the project is mapped below.
 
@@ -72,5 +72,25 @@ In the `[lib]` configuration module,  `crate-type = ["cdylib"]` specifies the co
 
 `[features]` is used to toggle newly introduced features that are unstable. These features can be used with the nightly version compiler only.
 
-The build.sh file encapsulates functions that will be used to compile and optimize our contract. 
+The `build.sh` file encapsulates functions that will be used to compile and optimize our contract. Executing this shell script will move the optimized bytecode to the output directory.
+
+The src/lib.rs rust file is used to write the contract logic. The template contains the following code:
+
+```rust
+#![no_std]
+use ontio_std::runtime;
+
+#[no_mangle]
+fn invoke() {
+	runtime::ret(b"hello");
+}
+```
+
+`#![no_std]` annotation is used to indicate that the core library is to be used instead of the standard library, referred to as **crate** in rust. This will allow us to use Ontology's APIs. 
+
+`#![no_mangle]` annotation indicates that when the code is compiled to `WASM` bytecode, the compiler will not obscure the invoke method. The `runtime` module encapsulates the API that allows the contract to communicate with the blockchain. The `runtime::ret()` method is used to return the result of contract invocation. Here, we are trying to implement a simple contract that returns "hello" when invoked.
+
+## Compiling the contract
+
+The code can be compiled and the optimized bytecode can be fetched by running the build.sh shell script.
 

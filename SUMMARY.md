@@ -2,6 +2,6 @@
 
 * [Getting Started](README.md)
 * [Development Environment](development-environment.md)
-* [Hello World](hello-world.md)
-* [Untitled](untitled.md)
+* [Project Initiation - Hello World](hello-world.md)
+* [Write from scratch](untitled.md)
 
