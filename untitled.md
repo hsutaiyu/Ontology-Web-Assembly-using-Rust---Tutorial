@@ -160,6 +160,8 @@ The `prelude` module of `ontio-std` provides a few commonly used functions that 
 
 The `runtime` `API` contains functions that are used to interact with the blockchain and the application end. For example, the `runtime::ret()` method is used to return the result of contract execution. 
 
+The `#[no_mangle]` annotation instructs the compiler not obscure the main function while compiling it to ensure that Ontology's build tools can work with the bytecode that is generated post-compilation.
+
 With this, the basic methods that allow us to interact with the contract are in place. The contract can now be compiled.
 
 ## Compiling the contract
@@ -199,7 +201,7 @@ The tools can be used by executing the following command with the `WASM` `byteco
 ontio-wasm-build helloworld.wasm helloworld_optimized.wasm
 ```
 
-The file with the optimized `bytecode` goes by the name of `helloworld_optimized`. Another file with a .str extension will also be generated. While deploying the contract we will be using this string file since we are carrying out this entire process using a `CLI` \(Command Line Interface\). 
+The file with the optimized `bytecode` goes by the name of `helloworld_optimized`. Another file with a `.str` extension will also be generated. While deploying the contract we will be using this string file that contains hex code obtained by converting the bytecode, since we are carrying out this entire process using a `CLI` \(Command Line Interface\). 
 
 ## Deploying and Invoking the contract
 
@@ -219,7 +221,7 @@ Next, open a new terminal window and run the following command to start the priv
 
 We need to ensure that this particular window stays up and running in the background since this is what serves as our private node, practically speaking.
 
-Then, return to the original window and execute thte following command to deploy the contract.
+Then, return to the original window and execute the following command to deploy the contract.
 
 ```bash
 ./ontology contract deploy --vmtype 3 --code ./helloworld.wasm.str --name helloworld --author "author" --email "email" --desc "desc" --gaslimit 22200000
@@ -237,7 +239,25 @@ Let us go through the series of options used here one by one.
 | --desc | String | Brief description of the contract's function |
 | --gaslimit | Integer | Gas limit to calculate the Gas cost for deploying the smart contract |
 
-After the deploy command, `--vmtype 3` indicates that the contract is a `WASM` contract. Apart from WASM contracts, Ontology also supports NeoVM smart contract development in Python and C\#. Interested developers feel free to check out the the relevant details.
+After the deploy command, `--vmtype 3` indicates that the contract is a `WASM` contract. We specify this  since apart from `WASM` contracts, Ontology also supports `NeoVM` smart contract development in `Python` and `C#`. Interested developers feel free to check out the the relevant details.
 
+Finally, if the contract was deployed successfully, we can proceed to invoke the contract using the contract details.
 
+The `invoke()` function serves as the entry point for a smart contract. Any other functions that we may define in the scope of the contract can be called by passing parameters to the `invoke()` function and then calling the respective function from within `invoke()`. The functions that are defined under the `#[test]` annotation can be run locally from the IDE to test logic.
+
+When we invoke the invoke\(\) function here,  it will return a "hello world" if the contract is invoked successfully, since the function we're calling is hello, and we have passed the string "hello world" as parameters. We just need to ensure that we use the `--prepare` option when invoking the contract. This means that we are pre-executing it, the reason for which being the result returned by the contract will not be displayed if we invoke and run the contract directly. 
+
+{% hint style="warning" %}
+More details on contract invocation and CLI operation in general can be found [here](https://github.com/ontio/ontology/blob/master/docs/specifications/cli_user_guide.md).
+{% endhint %}
+
+The command is as follows-
+
+```text
+./ontology contract invoke --address 913ea5298565123847ffe61ec93986a52e824a1b --vmtype 3 --params 'string:hello,string:hello world' --version 0 --prepare
+```
+
+If the executed successfully, **68656c6c6f20776f726c64** along with the transaction hash will be returned in the command line. The value is in fact "hello world" in hexadecimal. 
+
+You now have the fundamental understanding of Ontology's WASM contracts such that you can develop your own smart contracts and implement complex logic.
 
