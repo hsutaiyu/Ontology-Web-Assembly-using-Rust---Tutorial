@@ -10,7 +10,7 @@ To execute `rust` code on the Ontology blockchain, there's a process that needs 
 2. The bytecode is deployed on to the chain.
 3. Functions from the contract are invoked.
 
-We will approach the development process from two different angles. In this section, we will first look at a template designed with the specific goal of getting you acquainted with the fundamentals of writing a `WASM` smart contract. And then in the later sections, we will proceed to demonstrating how to start writing code from scratch.
+We will approach the development process from two different angles. In this section, we will first look at a template designed with the specific goal of getting you acquainted with the fundamentals of writing a `WASM` smart contract and working with a template. And then in the later sections, we will proceed to demonstrating how to start writing code from scratch.
 
 To facilitate developers looking to work on Ontology `WASM` smart contracts we have made available a `rust` template that developers can clone and start editing to speed things up. The code can be cloned from Github using the following command-
 
@@ -182,4 +182,10 @@ We expected a "Hello" to show up, but the value returned by the system is **6865
 The reason is simple. All the data values returned by the system will be `hex` encoded. A simple hexadecimal to string conversion will show that **68656c6c6f** is in fact "Hello".
 
 You have successfully executed your first Ontology `WASM` contract.
+
+## Templates for reference
+
+Please follow the following link to find the various templates made available by Ontology. The templates serve as examples that illustrate how token exchange and transaction protocols can be realized using rust.
+
+#### [Example Repo](https://github.com/lucas7788/ontio-cdk-1/tree/upmaster/examples)
 
