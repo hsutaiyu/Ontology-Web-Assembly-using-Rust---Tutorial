@@ -98,7 +98,7 @@ mod tests {
 }
 ```
 
-The is some test code included. You can test this code by executing the `cargo test` command under the `root` directory.
+There is some test code included. You can test this code by executing the `cargo test` command under the `root` directory.
 
 We can now proceed with writing our logic by editing this file.
 
@@ -156,11 +156,11 @@ fn test_hello() {
 
 Here, `Sink` and `Source` objects have been imported. `Source` allows us to fetch the parameters and data that is passed when the contract is invoked externally. `Sink` is used to serialize data of different formats to the `bytearray` format.
 
-The `prelude` module of `ontio-std` provides a few commonly used functions that perform data conversion  as `Address`, `U128`, `String`, etc., apart from other useful functions.
+The `prelude` module of `ontio-std` provides a few commonly used data types `Address`, `U128`, `String`, etc., apart from other useful functions.
 
 The `runtime` `API` contains functions that are used to interact with the blockchain and the application end. For example, the `runtime::ret()` method is used to return the result of contract execution. 
 
-The `#[no_mangle]` annotation instructs the compiler not obscure the main function while compiling it to ensure that Ontology's build tools can work with the bytecode that is generated post-compilation.
+The `#[no_mangle]` annotation instructs the compiler not to obscure the main function while compiling it to ensure that Ontology's build tools can work with the bytecode that is generated post-compilation.
 
 With this, the basic methods that allow us to interact with the contract are in place. The contract can now be compiled.
 
@@ -172,7 +172,7 @@ The code needs to be compiled and converted to `WASM` `bytecode` to be deployed 
 RUSTFLAGS="-C link-arg=-zstack-size=32768" cargo build --release --target wasm32-unknown-unknown
 ```
 
-The  `RUSTFLAGS="-C link-arg=-zstack-size=32768"` directive is used to set the maximum allowed stack size to 32KB. The default size of the `rustc` compiler stack is 1MB, which is very wasteful as far as smart contracts are concerned. `wasm32-unknown-unknown` indicates that the target bytecode be generated using the `11VM` back end compiler. It generates better and more sophisticated code than the `emscripten` compiler.
+The  `RUSTFLAGS="-C link-arg=-zstack-size=32768"` directive is used to set the maximum allowed stack size to 32KB. The default size of the `rustc` compiler stack is 1MB, which is very wasteful as far as smart contracts are concerned. `wasm32-unknown-unknown` indicates that the target `bytecode` be generated using the`LLVM` back end compiler. It generates better and more sophisticated code than the `emscripten` compiler.
 
 Once the above code is successfully executed the target directory will look like-
 
@@ -235,8 +235,8 @@ Let us go through the series of options used here one by one.
 | --code | Path | Path of the file containing the bytecode  |
 | --name | String | Name of the smart contract |
 | --author | String | Name of the author of the smart contract |
-| --email | Email address | Email address of the contract author |
-| --desc | String | Brief description of the contract's function |
+| --email | String | Email address of the contract author |
+| --desc | String | Brief description of the contract |
 | --gaslimit | Integer | Gas limit to calculate the Gas cost for deploying the smart contract |
 
 After the deploy command, `--vmtype 3` indicates that the contract is a `WASM` contract. We specify this  since apart from `WASM` contracts, Ontology also supports `NeoVM` smart contract development in `Python` and `C#`. Interested developers feel free to check out the the relevant details.
@@ -259,5 +259,5 @@ The command is as follows-
 
 If the executed successfully, **68656c6c6f20776f726c64** along with the transaction hash will be returned in the command line. The value is in fact "hello world" in hexadecimal. 
 
-You now have the fundamental understanding of Ontology's WASM contracts such that you can develop your own smart contracts and implement complex logic.
+You now have the fundamental understanding of Ontology's `WASM` contracts such that you can develop your own smart contracts and implement complex logic.
 
