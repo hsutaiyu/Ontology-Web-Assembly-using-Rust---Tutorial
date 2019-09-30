@@ -33,7 +33,7 @@ Before generating the API file, we need to edit the `Cargo.toml` file to add cer
 
 First, under the `[dependencies]` configuration, include the Ontology `WASM` contract toolkit. Also, since we will compiling the contract in a form that is different from the standard, we need to add `[lib]` configuration settings. 
 
-The `[features]` configuration is used to toggle certain unstable features. Please not that these features can only be compiled using the nightly compiler. 
+The `[features]` configuration is used to toggle certain unstable features. Please note that these features can only be compiled using the nightly compiler. 
 
 A complete `Cargo.toml` would look something like-
 
