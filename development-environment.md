@@ -44,14 +44,12 @@ Install the `wasm32` compiler target-
 rustup target add wasm32-unknown-unknown
 ```
 
-Later when we write our `rust` code, we will be compiling it and converting it to bytecode using the `cargo` tool. But, the file that `cargo` generates is relatively large in size. Therefore, to compress the bytecode file, as well as to check and optimize it for deploying on the blockchain, we will be using the `ontio-wasm-build` tool.
+Later when we write our `rust` code, we will be compiling it and converting it to bytecode using the `cargo` tool. But, the file that `cargo` generates is relatively large in size. Therefore, to compress the `bytecode` file, as well as to check and optimize it for deploying on the blockchain, we will be using the `ontio-wasm-build` tool.
 
-`ontio-wasm-build` can be installed using the following shell commands-
+`ontio-wasm-build` can be installed using the following shell command-
 
 ```bash
-git clone https://github.com/ontio/ontio-wasm-build
-cd ontio-wasm-build
-cargo build --release
+cargo install --git=https://github.com/ontio/ontio-wasm-build
 ```
 
 For more details on `ontio-wasm-build`, please refer to [this](https://github.com/ontio/ontio-wasm-build) link.
