@@ -261,3 +261,9 @@ If the executed successfully, **68656c6c6f20776f726c64** along with the transact
 
 You now have the fundamental understanding of Ontology's `WASM` contracts such that you can develop your own smart contracts and implement complex logic.
 
+## Code for reference
+
+For examples and sample code that implement more complex logic, please follow the link below.
+
+[Example Repo](https://github.com/ontio/ontology-wasm-cdt-rust/tree/master/examples)
+
